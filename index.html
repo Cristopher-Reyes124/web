@@ -1,0 +1,1797 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reyes Courier - Calidad, Seguridad y Excelencia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* HEADER - Barra de navegación fija */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #1a3a52;
+            padding: 15px 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        .navbar-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+        }
+
+        .brand-text h1 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 2px;
+        }
+
+        .brand-text p {
+            color: #b8c9d9;
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s;
+            padding: 8px 15px;
+            border-radius: 4px;
+        }
+
+        .nav-menu li a:hover,
+        .nav-menu li a.active {
+            background-color: rgba(255,255,255,0.1);
+            color: #8ec8f6;
+        }
+
+        /* BOTONES FLOTANTES */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 999;
+        }
+
+        .float-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+            text-decoration: none;
+            border: none;
+        }
+
+        .float-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .btn-whatsapp {
+            background-color: #25d366;
+        }
+
+        .btn-facebook {
+            background-color: #1877f2;
+        }
+
+        .btn-chat {
+            background-color: #5b9bd5;
+        }
+
+        .float-btn svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+
+        /* SECCIÓN HERO */
+        .hero-section {
+            margin-top: 80px;
+            background: linear-gradient(135deg, #1a3a52 0%, #2c5f8d 100%);
+            padding: 100px 80px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-section h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .hero-section p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .hero-btn {
+            background-color: white;
+            color: #1a3a52;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .hero-btn:hover {
+            background-color: #8ec8f6;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* SECCIONES GENERALES */
+        .section {
+            padding: 80px 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            color: #1a3a52;
+            margin-bottom: 50px;
+            font-weight: 600;
+        }
+
+        /* SERVICIOS */
+        #servicios {
+            background-color: #ffffff;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-color: #5b9bd5;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #5b9bd5 0%, #4a90e2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+
+        .service-card h3 {
+            color: #1a3a52;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .service-price {
+            color: #5b9bd5;
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        /* RASTREO */
+        #rastreo {
+            background: linear-gradient(135deg, #e8f4f8 0%, #d4e9f7 100%);
+        }
+
+        .tracking-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .tracking-form input {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .tracking-form button {
+            width: 100%;
+            padding: 15px;
+            background-color: #5b9bd5;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .tracking-form button:hover {
+            background-color: #4a90e2;
+        }
+
+        #trackingResult {
+            margin-top: 20px;
+            padding: 20px;
+            background: #e8f4f8;
+            border-radius: 5px;
+            display: none;
+        }
+
+        #trackingResult.show {
+            display: block;
+        }
+
+        /* CALCULADORA */
+        #calculadora {
+            background-color: #ffffff;
+        }
+
+        .calculator-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #1a3a52;
+            font-weight: 600;
+        }
+
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #5b9bd5;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .calculate-btn:hover {
+            background-color: #4a90e2;
+        }
+
+        .result-box {
+            margin-top: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+            text-align: center;
+            display: none;
+        }
+
+        .result-box.show {
+            display: block;
+        }
+
+        .result-price {
+            font-size: 36px;
+            color: #5b9bd5;
+            font-weight: bold;
+        }
+
+        /* SOBRE NOSOTROS */
+        #nosotros {
+            background: linear-gradient(135deg, #e8f4f8 0%, #d4e9f7 100%);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .about-card {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .about-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, #5b9bd5 0%, #4a90e2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-icon svg {
+            width: 50px;
+            height: 50px;
+            fill: white;
+        }
+
+        .about-card h3 {
+            color: #1a3a52;
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        .about-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* VALORES */
+        .valores-section {
+            margin-top: 60px;
+        }
+
+        .valores-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 25px;
+        }
+
+        .valor-item {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 10px;
+            text-align: center;
+            border-top: 4px solid #5b9bd5;
+            transition: all 0.3s;
+        }
+
+        .valor-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .valor-item p {
+            color: #1a3a52;
+            font-weight: 600;
+            font-size: 17px;
+        }
+
+        /* BENEFICIOS */
+        #beneficios {
+            background-color: #ffffff;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .benefit-card {
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 5px solid #5b9bd5;
+        }
+
+        .benefit-card h3 {
+            color: #1a3a52;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .benefit-card p {
+            color: #666;
+        }
+
+        /* TESTIMONIOS */
+        #testimonios {
+            background: linear-gradient(135deg, #e8f4f8 0%, #d4e9f7 100%);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-text {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #5b9bd5 0%, #4a90e2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .author-info h4 {
+            color: #1a3a52;
+            font-size: 16px;
+        }
+
+        .author-info p {
+            color: #999;
+            font-size: 13px;
+        }
+
+        /* ALIADOS */
+        #aliados {
+            background-color: #ffffff;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 30px;
+            align-items: center;
+        }
+
+        .partner-logo {
+            height: 80px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            transition: all 0.3s;
+            border: 2px solid #e9ecef;
+        }
+
+        .partner-logo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: #5b9bd5;
+        }
+
+        .partner-logo svg {
+            width: 60px;
+            height: 60px;
+            fill: #5b9bd5;
+        }
+
+        /* BLOG */
+        #blog {
+            background: linear-gradient(135deg, #e8f4f8 0%, #d4e9f7 100%);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .blog-image {
+            height: 200px;
+            background: linear-gradient(135deg, #5b9bd5 0%, #4a90e2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .blog-image svg {
+            width: 60px;
+            height: 60px;
+            fill: white;
+        }
+
+        .blog-content {
+            padding: 25px;
+        }
+
+        .blog-date {
+            color: #999;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .blog-content h3 {
+            color: #1a3a52;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .blog-content p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .read-more {
+            color: #5b9bd5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        /* FAQ */
+        #faq {
+            background-color: #ffffff;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: #f8f9fa;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px 25px;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .faq-question:hover {
+            border-color: #5b9bd5;
+        }
+
+        .faq-question h3 {
+            color: #1a3a52;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .faq-toggle {
+            color: #5b9bd5;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer.active {
+            max-height: 300px;
+        }
+
+        .faq-answer p {
+            padding: 20px 25px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* CONTACTO */
+        #contacto {
+            background: linear-gradient(135deg, #e8f4f8 0%, #d4e9f7 100%);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .info-item {
+            margin-bottom: 30px;
+        }
+
+        .info-item h4 {
+            color: #1a3a52;
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-item svg {
+            width: 20px;
+            height: 20px;
+            fill: #5b9bd5;
+        }
+
+        .info-item p {
+            color: #666;
+            margin-left: 30px;
+            line-height: 1.6;
+        }
+
+        .info-item a {
+            color: #5b9bd5;
+            text-decoration: none;
+        }
+
+        .info-item a:hover {
+            text-decoration: underline;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-left: 30px;
+            margin-top: 10px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: #5b9bd5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: #4a90e2;
+            transform: scale(1.1);
+        }
+
+        .social-link svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        .map-container {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            height: 500px;
+        }
+
+        .map-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* CHAT BOT */
+        .chatbot-container {
+            position: fixed;
+            bottom: 120px;
+            right: 30px;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+            display: none;
+            flex-direction: column;
+            z-index: 998;
+        }
+
+        .chatbot-container.active {
+            display: flex;
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #1a3a52 0%, #2c5f8d 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px 15px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-header h3 {
+            font-size: 18px;
+        }
+
+        .chat-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f8f9fa;
+        }
+
+        .chat-message {
+            margin-bottom: 15px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            max-width: 80%;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chat-message.bot {
+            background: white;
+            margin-right: auto;
+            border: 1px solid #e9ecef;
+        }
+
+        .chat-message.user {
+            background: #5b9bd5;
+            color: white;
+            margin-left: auto;
+        }
+
+        .chat-input-container {
+            padding: 15px;
+            border-top: 1px solid #e9ecef;
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 14px;
+        }
+
+        .chat-send {
+            background: #5b9bd5;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .chat-send:hover {
+            background: #4a90e2;
+        }
+
+        /* FOOTER */
+        .footer {
+            background-color: #1a3a52;
+            color: white;
+            padding: 60px 80px 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #b8c9d9;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #b8c9d9;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1200px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .valores-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .partners-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 968px) {
+            .navbar {
+                padding: 15px 30px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .section {
+                padding: 60px 30px;
+            }
+
+            .hero-section {
+                padding: 80px 30px;
+            }
+
+            .services-grid,
+            .about-grid,
+            .benefits-grid,
+            .testimonials-grid,
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .valores-grid,
+            .partners-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .services-grid,
+            .about-grid,
+            .benefits-grid,
+            .testimonials-grid,
+            .blog-grid,
+            .valores-grid,
+            .partners-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-section h2 {
+                font-size: 32px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .chatbot-container {
+                width: 100%;
+                right: 0;
+                left: 0;
+                bottom: 0;
+                border-radius: 15px 15px 0 0;
+            }
+
+            .footer {
+                padding: 40px 20px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <!-- CAMBIA "logo.png" por el nombre de tu archivo de logo -->
+            <img src="logo mio.png.jpeg" alt="Reyes Courier Logo" class="logo">
+            <div class="brand-text">
+                <h1>REYES COURIER</h1>
+                <p>CALIDAD, SEGURIDAD Y EXCELENCIA</p>
+            </div>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="#hero" onclick="setActive(this)">Inicio</a></li>
+            <li><a href="#servicios" onclick="setActive(this)">Servicios</a></li>
+            <li><a href="#rastreo" onclick="setActive(this)">Rastreo</a></li>
+            <li><a href="#nosotros" onclick="setActive(this)">Nosotros</a></li>
+            <li><a href="#blog" onclick="setActive(this)">Blog</a></li>
+            <li><a href="#contacto" onclick="setActive(this)">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- BOTONES FLOTANTES -->
+    <div class="floating-buttons">
+        <!-- CAMBIA EL NÚMERO DE TELÉFONO -->
+        <a href="https://wa.me/18092214000" target="_blank" class="float-btn btn-whatsapp" title="WhatsApp">
+            <svg viewBox="0 0 32 32"><path d="M16 0C7.164 0 0 7.164 0 16c0 2.824.738 5.48 2.028 7.78L0 32l8.4-2.016A15.897 15.897 0 0016 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm0 29.2c-2.46 0-4.876-.692-6.972-2.004l-.5-.3-5.18 1.244 1.28-4.864-.328-.516A13.142 13.142 0 012.8 16C2.8 8.708 8.708 2.8 16 2.8S29.2 8.708 29.2 16 23.292 29.2 16 29.2zm7.24-9.88c-.396-.2-2.348-1.156-2.712-1.288-.364-.132-.628-.2-.892.2-.264.396-1.024 1.288-1.256 1.552-.232.264-.464.3-.86.1-.396-.2-1.672-.616-3.184-1.964-1.176-1.048-1.972-2.344-2.204-2.74-.232-.396-.024-.612.176-.808.18-.18.396-.464.596-.696.2-.232.264-.396.396-.66.132-.264.068-.496-.032-.696-.1-.2-.892-2.148-1.224-2.944-.324-.776-.652-.672-.892-.684-.232-.012-.496-.012-.76-.012s-.696.1-1.06.496c-.364.396-1.388 1.356-1.388 3.308s1.42 3.836 1.62 4.1c.2.264 2.824 4.312 6.844 6.048.956.412 1.704.66 2.288.844.96.304 1.836.26 2.528.156.772-.116 2.348-.96 2.68-1.888.332-.928.332-1.724.232-1.888-.1-.164-.364-.264-.76-.464z"/></svg>
+        </a>
+
+        <!-- CAMBIA LA URL DE TU PÁGINA DE FACEBOOK -->
+        <a href="https://facebook.com/tupagina" target="_blank" class="float-btn btn-facebook" title="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+
+        <button class="float-btn btn-chat" onclick="toggleChat()" title="Chat en vivo">
+            <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+        </button>
+    </div>
+
+    <!-- CHATBOT -->
+    <div class="chatbot-container" id="chatbot">
+        <div class="chat-header">
+            <h3>💬 Chat en Vivo</h3>
+            <button class="chat-close" onclick="toggleChat()">×</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="chat-message bot">
+                ¡Hola! Soy el asistente virtual de Reyes Courier. ¿En qué puedo ayudarte hoy?
+            </div>
+        </div>
+        <div class="chat-input-container">
+            <input type="text" class="chat-input" id="chatInput" placeholder="Escribe tu mensaje..." onkeypress="if(event.key==='Enter') sendMessage()">
+            <button class="chat-send" onclick="sendMessage()">Enviar</button>
+        </div>
+    </div>
+
+    <!-- SECCIÓN HERO -->
+    <section class="hero-section" id="hero">
+        <h2>Servicio de Courier Profesional</h2>
+        <p>Entregas rápidas, seguras y confiables en todo el país</p>
+        <button class="hero-btn" onclick="document.getElementById('servicios').scrollIntoView({behavior: 'smooth'})">Ver Servicios</button>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="section" id="servicios">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+                </div>
+                <h3>Envío Express</h3>
+                <p>Entrega el mismo día en zona metropolitana</p>
+                <div class="service-price">RD$ 250</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>
+                </div>
+                <h3>Envío Seguro</h3>
+                <p>Seguro incluido hasta RD$ 50,000</p>
+                <div class="service-price">RD$ 350</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+                </div>
+                <h3>Corporativo</h3>
+                <p>Soluciones para empresas con descuentos</p>
+                <div class="service-price">Desde RD$ 180</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                </div>
+                <h3>Nacional</h3>
+                <p>Cobertura en todo el territorio nacional</p>
+                <div class="service-price">RD$ 450</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                </div>
+                <h3>Programado</h3>
+                <p>Agenda tu entrega con anticipación</p>
+                <div class="service-price">RD$ 200</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                </div>
+                <h3>Rastreo GPS</h3>
+                <p>Seguimiento en tiempo real de tu paquete</p>
+                <div class="service-price">Incluido</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+                </div>
+                <h3>Internacional</h3>
+                <p>Envíos a Estados Unidos y Europa</p>
+                <div class="service-price">RD$ 1,500</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><path d="M20 2H4c-1 0-2 .9-2 2v3.01c0 .72.43 1.34 1 1.69V20c0 1.1 1.1 2 2 2h14c.9 0 2-.9 2-2V8.7c.57-.35 1-.97 1-1.69V4c0-1.1-1-2-2-2zm-5 12H9v-2h6v2zm5-7H4V4h16v3z"/></svg>
+                </div>
+                <h3>Almacenaje</h3>
+                <p>Bodega segura para tus paquetes</p>
+                <div class="service-price">RD$ 100/día</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RASTREO -->
+    <section class="section" id="rastreo">
+        <h2 class="section-title">Rastrea tu Paquete</h2>
+        <div class="tracking-form">
+            <input type="text" id="trackingNumber" placeholder="Ingresa tu número de rastreo (ej: RC123456)">
+            <button onclick="trackPackage()">Rastrear Paquete</button>
+            <div id="trackingResult">
+                <p style="color: #1a3a52; font-weight: bold;">Estado de tu paquete:</p>
+                <p id="trackingStatus" style="color: #666;"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALCULADORA DE TARIFAS -->
+    <section class="section" id="calculadora">
+        <h2 class="section-title">Calculadora de Tarifas</h2>
+        <div class="calculator-container">
+            <div class="form-group">
+                <label>Origen:</label>
+                <select id="origin">
+                    <option value="">Selecciona una ciudad</option>
+                    <option value="santo-domingo">Santo Domingo</option>
+                    <option value="santiago">Santiago</option>
+                    <option value="la-vega">La Vega</option>
+                    <option value="puerto-plata">Puerto Plata</option>
+                    <option value="san-cristobal">San Cristóbal</option>
+					<option value="Estados Unidos">Estados Unidos</option>
+					<option value="Europa">Europa</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Destino:</label>
+                <select id="destination">
+                    <option value="">Selecciona una ciudad</option>
+                    <option value="santo-domingo">Santo Domingo</option>
+                    <option value="santiago">Santiago</option>
+                    <option value="la-vega">La Vega</option>
+                    <option value="puerto-plata">Puerto Plata</option>
+                    <option value="san-cristobal">San Cristóbal</option>
+					 <option value="Estados Unidos">Estados Unidos</option>
+					 <option value="Europa">Europa</option>
+					
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Peso (kg):</label>
+                <input type="number" id="weight" placeholder="Ej: 2.5" step="0.1" min="0.1">
+            </div>
+            <div class="form-group">
+                <label>Tipo de servicio:</label>
+                <select id="serviceType">
+                    <option value="express">Express (mismo día)</option>
+                    <option value="standard">Estándar (1-3 días)</option>
+                    <option value="economic">Económico (3-5 días)</option>
+                </select>
+            </div>
+            <button class="calculate-btn" onclick="calculateRate()">Calcular Tarifa</button>
+            <div class="result-box" id="rateResult">
+                <p style="color: #1a3a52; font-weight: 600; margin-bottom: 10px;">Tarifa estimada:</p>
+                <div class="result-price" id="calculatedPrice">RD$ 0</div>
+                <p style="color: #666; margin-top: 10px; font-size: 14px;">*Precio sujeto a verificación del paquete</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE NOSOTROS -->
+    <section class="section" id="nosotros">
+        <h2 class="section-title">Sobre Nosotros</h2>
+        <div class="about-grid">
+            <div class="about-card">
+                <div class="about-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                </div>
+                <h3>Misión</h3>
+                <p>Brindar un servicio de entregas facilitando el movimiento de sus envíos con la más alta calidad, seguridad y puntualidad.</p>
+            </div>
+
+            <div class="about-card">
+                <div class="about-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                </div>
+                <h3>Visión</h3>
+                <p>Ser la empresa de courier líder y más confiable de la región, reconocida por nuestra innovación tecnológica, excelencia operativa y compromiso con la sostenibilidad.</p>
+            </div>
+
+            <div class="about-card">
+                <div class="about-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                </div>
+                <h3>Nosotros</h3>
+                <p>Somos una empresa comprometida con la excelencia en el servicio de entregas, garantizando calidad, seguridad y puntualidad en cada envío.</p>
+            </div>
+        </div>
+
+        <div class="valores-section">
+            <h2 class="section-title">Nuestros Valores</h2>
+            <div class="valores-grid">
+                <div class="valor-item">
+                    <p>Compromiso</p>
+                </div>
+                <div class="valor-item">
+                    <p>Innovación</p>
+                </div>
+                <div class="valor-item">
+                    <p>Excelencia Operativa</p>
+                </div>
+                <div class="valor-item">
+                    <p>Confiabilidad</p>
+                </div>
+                <div class="valor-item">
+                    <p>Calidad</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section class="section" id="beneficios">
+        <h2 class="section-title">¿Por Qué Elegirnos?</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <h3>🚀 Rapidez</h3>
+                <p>Entregas express el mismo día en zona metropolitana. Tu paquete llega cuando lo necesitas.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>🔒 Seguridad</h3>
+                <p>Todos nuestros envíos incluyen seguro y rastreo GPS en tiempo real para tu tranquilidad.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>💰 Mejores Precios</h3>
+                <p>Tarifas competitivas y descuentos especiales para envíos corporativos y frecuentes.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>🌍 Cobertura Nacional</h3>
+                <p>Llegamos a todas las provincias del país con la misma calidad de servicio.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>📱 Tecnología</h3>
+                <p>App móvil y plataforma web para gestionar tus envíos desde cualquier lugar.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>👥 Atención 24/7</h3>
+                <p>Servicio al cliente disponible todos los días para resolver tus consultas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section class="section" id="testimonios">
+        <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Excelente servicio. Mis paquetes siempre llegan a tiempo y en perfecto estado. El rastreo en tiempo real es muy útil."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">MR</div>
+                    <div class="author-info">
+                        <h4>María Rodríguez</h4>
+                        <p>Cliente Frecuente</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Como empresa, necesitábamos un servicio confiable para nuestros envíos diarios. Reyes Courier superó nuestras expectativas."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">JM</div>
+                    <div class="author-info">
+                        <h4>Juan Martínez</h4>
+                        <p>Gerente de Logística</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Precios justos y servicio de calidad. El personal es muy profesional y siempre están dispuestos a ayudar."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">AS</div>
+                    <div class="author-info">
+                        <h4>Ana Sánchez</h4>
+                        <p>Emprendedora</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ALIADOS -->
+    <section class="section" id="aliados">
+        <h2 class="section-title">Nuestros Aliados Estratégicos</h2>
+        <div class="partners-grid">
+            <div class="partner-logo">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            </div>
+            <div class="partner-logo">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+            </div>
+            <div class="partner-logo">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <div class="partner-logo">
+                <svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99z"/></svg>
+            </div>
+            <div class="partner-logo">
+                <svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+            </div>
+            <div class="partner-logo">
+                <svg viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1z"/></svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG -->
+    <section class="section" id="blog">
+        <h2 class="section-title">Blog y Noticias</h2>
+        <div class="blog-grid">
+            <div class="blog-card">
+                <div class="blog-image">
+                    <svg viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                </div>
+                <div class="blog-content">
+                    <p class="blog-date">15 Noviembre 2025</p>
+                    <h3>Consejos para Embalar tus Paquetes</h3>
+                    <p>Aprende las mejores técnicas para empacar y asegurar tus envíos para que lleguen en perfecto estado.</p>
+                    <a href="#" class="read-more">Leer más →</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <div class="blog-image">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                </div>
+                <div class="blog-content">
+                    <p class="blog-date">10 Noviembre 2025</p>
+                    <h3>Nuevas Rutas Disponibles</h3>
+                    <p>Ampliamos nuestra cobertura con nuevas rutas hacia el sur y este del país. Conoce todos los detalles.</p>
+                    <a href="#" class="read-more">Leer más →</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <div class="blog-image">
+                    <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
+                </div>
+                <div class="blog-content">
+                    <p class="blog-date">5 Noviembre 2025</p>
+                    <h3>Seguridad en tus Envíos</h3>
+                    <p>Conoce los protocolos de seguridad que implementamos para proteger cada uno de tus paquetes.</p>
+                    <a href="#" class="read-more">Leer más →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+        <h2 class="section-title">Preguntas Frecuentes</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>¿Cuánto tarda una entrega express?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Las entregas express en zona metropolitana se realizan el mismo día si el pedido se hace antes de las 12:00 PM. Para otras zonas, el tiempo de entrega es de 1 a 3 días hábiles dependiendo de la distancia.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>¿Cómo puedo rastrear mi paquete?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Puedes rastrear tu paquete ingresando el número de guía en nuestra sección de rastreo. También recibirás actualizaciones por SMS y correo electrónico en cada etapa del envío.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>¿Qué incluye el seguro de envío?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Todos nuestros envíos incluyen un seguro básico de hasta RD$ 5,000. Para paquetes de mayor valor, ofrecemos seguros adicionales que cubren hasta RD$ 50,000 o más según tus necesidades.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>¿Realizan envíos internacionales?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Sí, realizamos envíos internacionales a Estados Unidos, Europa y otros países. Los tiempos de entrega varían según el destino, generalmente entre 5 a 15 días hábiles.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>¿Cuáles son las formas de pago?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Aceptamos efectivo, tarjetas de crédito y débito, transferencias bancarias y pagos móviles. Para clientes corporativos ofrecemos facturación mensual.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="section" id="contacto">
+        <h2 class="section-title">Contáctanos</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="info-item">
+                    <h4>
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        Dirección
+                    </h4>
+                    <p>
+                        Calle Srta Elupina Cordero No.1<br>
+                        Sabana de la Mar,Hato Mayor Del Rey<br>
+                        República Dominicana<br>                        Código Postal:25000
+                    </p>
+                </div>
+
+                <div class="info-item">
+                    <h4>
+                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        Teléfono
+                    </h4>
+                    <p>
+                        <a href="tel:8299255770">829925570</a><br>
+                        WhatsApp: <a href="https://web.whatsapp.com/">829-925-5770</a>
+                    </p>
+                </div>
+
+                <div class="info-item">
+                    <h4>
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        Email
+                    </h4>
+                    <p>
+                        <a href="mailto:info@reyescourier.com">info@reyescourier.com</a><br>
+                        <a href="mailto:servicio@reyescourier.com">servicio@reyescourier.com</a>
+                    </p>
+                </div>
+
+                <div class="info-item">
+                    <h4>
+                        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                        Horario
+                    </h4>
+                    <p>
+                        Lunes a Viernes: 8:00 AM - 5:00 PM<br>
+                        Sábados: 8:00 AM - 12:00 PM<br>
+                        Domingos: Cerrado
+                    </p>
+                </div>
+
+                <div class="info-item">
+                    <h4>
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        Redes Sociales
+                    </h4>
+                    <div class="social-links">
+                        <a href="https://facebook.com/tupagina" target="_blank" class="social-link" title="Facebook">
+                            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="https://instagram.com/tupagina" target="_blank" class="social-link" title="Instagram">
+                            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="https://twitter.com/tupagina" target="_blank" class="social-link" title="Twitter">
+                            <svg viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-container">
+                <!-- OPCIÓN 1: Usar imagen del mapa -->
+                <!-- Descarga una captura de Google Maps de tu ubicación y guárdala como "mapa.png" -->
+                <!-- <img src="mapa.png" alt="Mapa de ubicación Reyes Courier"> -->
+                
+                <!-- OPCIÓN 2: Usar iframe de Google Maps (RECOMENDADO) -->
+                <!-- Ve a Google Maps, busca tu dirección, haz clic en "Compartir" > "Insertar un mapa" y copia el código -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15083.336614014614!2d-69.39492925!3d19.07102805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2sdo!4v1763314793396!5m2!1ses-419!2sdo" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> " loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h3>Reyes Courier</h3>
+                <p style="color: #b8c9d9; margin-bottom: 20px;">Servicio de courier profesional con más de 10 años de experiencia en entregas rápidas y seguras.</p>
+                <p style="color: #b8c9d9;">Calidad, Seguridad y Excelencia</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#rastreo">Rastrear Paquete</a></li>
+                    <li><a href="#calculadora">Calculadora</a></li>
+                    <li><a href="#nosotros">Sobre Nosotros</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Servicios</h3>
+                <ul>
+                    <li><a href="#servicios">Envío Express</a></li>
+                    <li><a href="#servicios">Envío Seguro</a></li>
+                    <li><a href="#servicios">Corporativo</a></li>
+                    <li><a href="#servicios">Nacional</a></li>
+                    <li><a href="#servicios">Internacional</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <ul>
+                    <li><a href="https://web.whatsapp.com/" 829-925-5770 </a></li> 
+                    <li><a href="mailto:info@reyescourier.com">info@reyescourier.com</a></li>
+                    <li><a href="#contacto">Santo Domingo, D.N.</a></li>
+                    <li><a href=" https://web.whatsapp.com/target="_blank">WhatsApp</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Reyes Courier. Todos los derechos reservados. | Diseñado para proyecto universitario</p>
+        </div>
+    </footer>
+
+    <script>
+        // Función para activar el menú de navegación
+        function setActive(element) {
+            document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        // Toggle Chat
+        function toggleChat() {
+            const chatbot = document.getElementById('chatbot');
+            chatbot.classList.toggle('active');
+        }
+
+        // Enviar mensaje en el chat
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const messagesContainer = document.getElementById('chatMessages');
+            const message = input.value.trim();
+
+            if (message === '') return;
+
+            // Agregar mensaje del usuario
+            const userMessage = document.createElement('div');
+            userMessage.className = 'chat-message user';
+            userMessage.textContent = message;
+            messagesContainer.appendChild(userMessage);
+
+            // Limpiar input
+            input.value = '';
+
+            // Scroll al final
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            // Simular respuesta del bot después de 1 segundo
+            setTimeout(() => {
+                const botMessage = document.createElement('div');
+                botMessage.className = 'chat-message bot';
+                
+                // Respuestas automáticas basadas en palabras clave
+                const lowerMessage = message.toLowerCase();
+                
+                if (lowerMessage.includes('precio') || lowerMessage.includes('tarifa') || lowerMessage.includes('costo')) {
+                    botMessage.textContent = 'Nuestras tarifas comienzan desde RD$ 180. Puedes usar nuestra calculadora de tarifas en la página para obtener un precio exacto según tu envío.';
+                } else if (lowerMessage.includes('rastreo') || lowerMessage.includes('rastrear') || lowerMessage.includes('seguimiento')) {
+                    botMessage.textContent = 'Puedes rastrear tu paquete en la sección "Rastreo" de nuestra página. Solo necesitas tu número de guía.';
+                } else if (lowerMessage.includes('horario') || lowerMessage.includes('hora')) {
+                    botMessage.textContent = 'Nuestro horario es de Lunes a Viernes de 8:00 AM a 5:00 PM, y Sábados de 8:00 AM a 12:00 PM.';
+                } else if (lowerMessage.includes('hola') || lowerMessage.includes('buenos') || lowerMessage.includes('buenas')) {
+                    botMessage.textContent = '¡Hola! ¿En qué puedo ayudarte hoy? Puedo darte información sobre nuestros servicios, tarifas, horarios y más.';
+                } else if (lowerMessage.includes('gracias')) {
+                    botMessage.textContent = '¡De nada! ¿Hay algo más en lo que pueda ayudarte?';
+                } else {
+                    botMessage.textContent = 'Gracias por tu mensaje. Para asistencia personalizada, puedes contactarnos al 809-221-4000 o por WhatsApp. ¿Puedo ayudarte con información sobre nuestros servicios?';
+                }
+                
+                messagesContainer.appendChild(botMessage);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }, 1000);
+        }
+
+        // Función para rastrear paquetes
+        function trackPackage() {
+            const trackingNumber = document.getElementById('trackingNumber').value.trim();
+            const resultDiv = document.getElementById('trackingResult');
+            const statusP = document.getElementById('trackingStatus');
+
+            if (trackingNumber === '') {
+                alert('Por favor ingresa un número de rastreo');
+                return;
+            }
+
+            // Simular estados de rastreo (en producción esto vendría de una base de datos)
+            const estados = [
+                'En proceso de recolección',
+                'En tránsito',
+                'En centro de distribución',
+                'En ruta de entrega',
+                'Entregado'
+            ];
+
+            const estadoAleatorio = estados[Math.floor(Math.random() * estados.length)];
+            
+            statusP.innerHTML = `
+                <strong>Número de guía:</strong> ${trackingNumber}<br>
+                <strong>Estado:</strong> ${estadoAleatorio}<br>
+                <strong>Última actualización:</strong> ${new Date().toLocaleString('es-DO')}
+            `;
+
+            resultDiv.classList.add('show');
+        }
+
+        // Función para calcular tarifas
+        function calculateRate() {
+            const origin = document.getElementById('origin').value;
+            const destination = document.getElementById('destination').value;
+            const weight = parseFloat(document.getElementById('weight').value);
+            const serviceType = document.getElementById('serviceType').value;
+
+            if (!origin || !destination || !weight) {
+                alert('Por favor completa todos los campos');
+                return;
+            }
+
+            if (weight <= 0) {
+                alert('El peso debe ser mayor a 0');
+                return;
+            }
+
+            // Cálculo de tarifa (fórmula de ejemplo)
+            let baseRate = 150;
+            
+            // Ajuste por tipo de servicio
+            if (serviceType === 'express') {
+                baseRate = 250;
+            } else if (serviceType === 'standard') {
+                baseRate = 200;
+            } else if (serviceType === 'economic') {
+                baseRate = 150;
+            }
+
+            // Ajuste por peso
+            let weightRate = weight * 50;
+
+            // Ajuste por distancia (mismo destino = descuento)
+            let distanceMultiplier = origin === destination ? 0.5 : 1;
+
+            // Cálculo final
+            const totalRate = Math.round((baseRate + weightRate) * distanceMultiplier);
+
+            // Mostrar resultado
+            document.getElementById('calculatedPrice').textContent = `RD$ ${totalRate.toLocaleString()}`;
+            document.getElementById('rateResult').classList.add('show');
+        }
+
+        // Función para el FAQ
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const toggle = element.querySelector('.faq-toggle');
+            
+            // Cerrar todos los demás
+            document.querySelectorAll('.faq-answer').forEach(item => {
+                if (item !== answer) {
+                    item.classList.remove('active');
+                }
+            });
+
+            document.querySelectorAll('.faq-toggle').forEach(item => {
+                if (item !== toggle) {
+                    item.textContent = '+';
+                }
+            });
+
+            // Toggle el actual
+            answer.classList.toggle('active');
+            toggle.textContent = answer.classList.contains('active') ? '−' : '+';
+        }
+
+        // Destacar sección activa al hacer scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.section, .hero-section');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
